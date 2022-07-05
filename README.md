@@ -6,6 +6,8 @@ The `web-host` || `electron-host` || `capacitor-host` apps will require the `fra
 
 All the shared logic & platform agnostic code will be here in the `frame-app`.
 
+![Frame-Host Logic](public/logic.jpeg)
+
 ## Getting Started
 
 Check one the host repositories to get started.
