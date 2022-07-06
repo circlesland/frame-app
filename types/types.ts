@@ -8,7 +8,7 @@ export interface ICirclesLocalStorage {
 export interface ICirclesAuthApi {
   login: () => void;
   logout: () => void;
-  processAuth: (window: Window & ICirclesCustomWindow) => boolean;
+  processAuth: (userData: string) => boolean;
   getDataFromLocalStorage: () => ICirclesLocalStorage | null;
 }
 

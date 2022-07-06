@@ -9,7 +9,9 @@
 
   onMount(async () => {
     // Get user data base64 string from url and save it to localStorage
-    window.authApi.processAuth(window);
+    const _url = new URL(window.location.toString());
+    const userDataParam = _url.searchParams.get("user_data");
+    if (userDataParam) window.authApi.processAuth(userDataParam);
 
     loadProfileData();
   });
