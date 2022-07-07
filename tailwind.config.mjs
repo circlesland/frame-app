@@ -3,7 +3,11 @@ export default {
   theme: {
     extend: {},
   },
-  content: ["./index.html", "./src/**/*.{svelte,js,ts}", "./node_modules/frame-app/src/*.{svelte,js,ts}"], // for unused CSS
+  content: [
+    "./index.html",
+    "./src/**/*.{svelte,js,ts}",
+    "./node_modules/@circlesland/frame-app/src/**/*.{svelte,js,ts}",
+  ], // for unused CSS
   variants: {
     extend: {},
   },
