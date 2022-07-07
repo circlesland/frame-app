@@ -1,10 +1,22 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import TailwindCss from "./TailwindCSS.svelte";
-  let profileData;
+  import { ethers } from "ethers";
 
-  const loadProfileData = () => {
+  let profileData;
+  let address: string;
+
+  const loadProfileData = async () => {
     profileData = window.authApi.getDataFromLocalStorage();
+
+    if (profileData?.privateKey) {
+      const privateKey = "0x" + profileData.privateKey;
+      const wallet = new ethers.Wallet(privateKey);
+      address = wallet.address;
+      const signature = await wallet.signMessage("my awesome message");
+      console.log("signed msg", signature);
+      // const signingKey = new ethers.utils.SigningKey(privateKey);
+    }
   };
 
   onMount(async () => {
@@ -30,6 +42,10 @@
   <p class="text-gray-600 text-4xl mt-32">
     Hello from the frame app :) {profileData?.name || profileData?.email || ""}
   </p>
+
+  {#if address}
+    <p>Address: {address}</p>
+  {/if}
 
   <div><button on:click={login}>login</button></div>
   <div><button on:click={logout}>logout</button></div>
