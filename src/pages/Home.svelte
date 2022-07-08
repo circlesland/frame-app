@@ -27,8 +27,8 @@
     loadProfileData();
   });
 
-  const login = () => {
-    window.authApi.login();
+  const login = (testAccount) => {
+    window.authApi.login(testAccount);
   };
   const logout = () => {
     window.authApi.logout();
@@ -46,5 +46,6 @@
   {/if}
 
   <div><button on:click={login}>login</button></div>
+  <div><button on:click={() => login(0)}>login test account 1</button></div>
   <div><button on:click={logout}>logout</button></div>
 </div>

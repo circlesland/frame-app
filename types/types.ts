@@ -6,7 +6,7 @@ export interface ICirclesLocalStorage {
   privateKey: string;
 }
 export interface ICirclesAuthApi {
-  login: () => void;
+  login: (testAccount?: number) => void;
   logout: () => void;
   processAuth: (userData: string) => boolean;
   getDataFromLocalStorage: () => ICirclesLocalStorage | null;
