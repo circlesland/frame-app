@@ -27,7 +27,8 @@
     loadProfileData();
   });
 
-  const login = (testAccount) => {
+  const login = (e: any, testAccount?: number) => {
+    e.preventDefault();
     window.authApi.login(testAccount);
   };
   const logout = () => {
@@ -44,8 +45,7 @@
   {#if address}
     <p>Address: {address}</p>
   {/if}
-
   <div><button on:click={login}>login</button></div>
-  <div><button on:click={() => login(0)}>login test account 1</button></div>
+  <div><button on:click={(e) => login(e, 0)}>login test account 1</button></div>
   <div><button on:click={logout}>logout</button></div>
 </div>
