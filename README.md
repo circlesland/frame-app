@@ -2,15 +2,22 @@
 
 ## How it works?
 
-The `web-host` || `electron-host` || `capacitor-host` apps will require the `frame-app` as a dependency and build together the full production app. All the host specific APIs will be injected into the `window` object.
+The `web-host` || `electron-host` || `capacitor-host` apps will require the `@circlesland/frame-app` as a dependency and build together the full production app. All the host specific APIs will be injected into the `window` object.
 
-All the shared logic & platform agnostic code will be here in the `frame-app`.
+All the shared logic & platform agnostic code will be here in the `@circlesland/frame-app`. The main purpose of the host apps is to implement the native APIs (example use localStorage on web, UserDefaults on iOS and SharedPreferences on Android, etc).
+
+All apps (web, electron, capacitor) will open the `auth-provider` for authentication on the native web browser. After the use completes the auth process in the web browser, it will be redirected back to the app (web for the web version, open the mobile app for capacitor or open the desktop app for electron).
 
 ![Frame-Host Logic](public/logic.jpeg)
 
 ## Getting Started
 
-Check one the host repositories to get started.
+1. Clone this repository locally
+2. Clone any host app locally - [web-host](https://github.com/circlesland/web-host), [electron-host](https://github.com/circlesland/electron-host), [capacitor-host](https://github.com/circlesland/capacitor-host)
+3. Run `npm install` into the host app
+4. Run `npm link` into the frame app
+5. Run `npm link @circlesland/frame-app` into the host app
+6. Run `npm run dev` (or `npm run dev:ios`) into the host app 🎉
 
 ## Resources
 
