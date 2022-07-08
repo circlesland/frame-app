@@ -18,6 +18,7 @@ All apps (web, electron, capacitor) will open the `auth-provider` for authentica
 4. Run `npm link` into the frame app
 5. Run `npm link @circlesland/frame-app` into the host app
 6. Run `npm run dev` (or `npm run dev:ios`) into the host app 🎉
+7. Clone [auth-provider](https://github.com/circlesland/auth-provider) locally and run `npm install` & `npm start`
 
 ## Resources
 
