@@ -7,11 +7,12 @@ import {
     RequestId,
     RPCPayload,
     SDKMessageEvent,
+    SignMessageParams,
 } from '@gnosis.pm/safe-apps-sdk';
 import { providers } from 'ethers';
 
 import { chainIdToNetwork } from './chainIdToNetwork';
-import { sendTransaction } from './SendTransactions';
+import { sendTransaction, signMessage } from './SendTransactions';
 
 interface Account {
   chainId: number;
@@ -52,6 +53,19 @@ export class FrameCommunicator {
           const { txs } = params;
           sendTransaction(txs);
         }
+        break;
+      }
+
+      case "signMessage": {
+        const { message } = params as SignMessageParams;
+        signMessage(message).then((signature) => {
+          this.sendResponse(
+            {
+              signature,
+            },
+            requestId
+          );
+        });
         break;
       }
 

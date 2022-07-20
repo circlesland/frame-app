@@ -24,3 +24,11 @@ export const sendTransaction = async (txs: any[]) => {
     console.log("send tx", transaction);
   });
 };
+
+export const signMessage = async (msg: string) => {
+  // @ts-ignore
+  const { privateKey } = window.authApi.getDataFromLocalStorage();
+  const wallet = new ethers.Wallet(privateKey);
+  const signature = wallet.signMessage("my awesome message");
+  return signature;
+};
