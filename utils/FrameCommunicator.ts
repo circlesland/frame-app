@@ -59,12 +59,7 @@ export class FrameCommunicator {
       case "signMessage": {
         const { message } = params as SignMessageParams;
         signMessage(message).then((signature) => {
-          this.sendResponse(
-            {
-              signature,
-            },
-            requestId
-          );
+          this.sendResponse(signature, requestId);
         });
         break;
       }
