@@ -1,9 +1,23 @@
 <script lang="ts">
+  import { FrameCommunicator } from "./../../utils/FrameCommunicator";
   import { onMount } from "svelte";
   import { ethers } from "ethers";
+  import SafeAppsSDK from "@gnosis.pm/safe-apps-sdk";
+  import {
+    getSDKVersion,
+    SDKMessageEvent,
+    MethodToResponse,
+    Methods,
+    SafeInfo,
+    MessageFormatter,
+    RequestId,
+    BaseTransaction,
+    RPCPayload,
+  } from "@gnosis.pm/safe-apps-sdk";
 
   let profileData;
   let address: string;
+  let appUrl = "https://cowswap.exchange/";
 
   const loadProfileData = async () => {
     profileData = window.authApi.getDataFromLocalStorage();
@@ -25,6 +39,24 @@
     if (userDataParam) window.authApi.processAuth(userDataParam);
 
     loadProfileData();
+
+    const iframeEl = document.getElementById("myIframe");
+
+    const frameCommunicator = new FrameCommunicator(
+      {
+        // @ts-ignore
+        chainId: window.ethereum.networkVersion,
+        address,
+      },
+      appUrl,
+      iframeEl as HTMLIFrameElement
+    );
+
+    // TODO: Move this
+    window.addEventListener("message", function (message) {
+      frameCommunicator.handleMessage(message);
+      console.log("event", message);
+    });
   });
 
   const login = (e: any, testAccount?: number) => {
@@ -38,7 +70,7 @@
 </script>
 
 <div>
-  <p class="text-gray-600 text-4xl mt-32">
+  <p class="text-gray-600 text-4xl mt-8">
     Hello from the frame app :) {profileData?.name || profileData?.email || ""}
   </p>
 
@@ -48,4 +80,6 @@
   <div><button on:click={login}>login</button></div>
   <div><button on:click={(e) => login(e, 0)}>login test account 1</button></div>
   <div><button on:click={logout}>logout</button></div>
+
+  <iframe src={appUrl} frameborder="0" width="100%" height="500px" id="myIframe" />
 </div>

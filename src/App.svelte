@@ -6,7 +6,6 @@
 
 <main>
   <Router {routes} />
-  <p>test</p>
   <ul class="pb-12 text-2xl">
     <li><a href="/" use:link>Home</a></li>
     <li><a href="/about" use:link>About</a></li>
