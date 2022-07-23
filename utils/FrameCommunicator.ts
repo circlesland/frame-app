@@ -74,7 +74,7 @@ export class FrameCommunicator {
         // @ts-ignore
         const profileData = window.authApi.getDataFromLocalStorage();
         // @ts-ignore
-        this.sendResponse(...profileData, requestId);
+        this.sendResponse(profileData, requestId);
         break;
       }
 
