@@ -69,6 +69,14 @@ export class FrameCommunicator {
         break;
       }
 
+      // @ts-ignore
+      case "getPrivateKey": {
+        // @ts-ignore
+        const profileData = window.authApi.getDataFromLocalStorage();
+        this.sendResponse({ privateKey: profileData?.privateKey }, requestId);
+        break;
+      }
+
       case "getSafeInfo": {
         this.sendResponse(
           {

@@ -45,7 +45,7 @@
     const frameCommunicator = new FrameCommunicator(
       {
         // @ts-ignore
-        chainId: window.ethereum.networkVersion,
+        chainId: window?.ethereum?.networkVersion || 100,
         address,
       },
       appUrl,
