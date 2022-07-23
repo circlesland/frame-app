@@ -17,7 +17,7 @@
 
   let profileData;
   let address: string;
-  let appUrl = "https://cowswap.exchange/";
+  let appUrl = "https://framedapp.circles.land";
 
   const loadProfileData = async () => {
     profileData = window.authApi.getDataFromLocalStorage();
