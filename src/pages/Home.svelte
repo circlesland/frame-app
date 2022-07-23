@@ -89,5 +89,5 @@
     <div><button on:click={logout}>logout</button></div>
   </div> -->
 
-  <iframe src={appUrl} frameborder="0" width="100%" height="500px" id="myIframe" />
+  <iframe src={appUrl} frameborder="0" width="100%" height="100%" id="myIframe" />
 </div>
