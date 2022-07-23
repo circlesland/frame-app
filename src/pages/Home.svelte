@@ -56,11 +56,15 @@
     window.addEventListener("message", function (message) {
       frameCommunicator.handleMessage(message);
       console.log("event", message);
+
+      if (message?.data?.method === "login") {
+        login();
+      }
     });
   });
 
-  const login = (e: any, testAccount?: number) => {
-    e.preventDefault();
+  const login = (e?: any, testAccount?: number) => {
+    if (e) e.preventDefault();
     window.authApi.login(testAccount);
   };
   const logout = () => {
