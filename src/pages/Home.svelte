@@ -77,9 +77,11 @@
   {#if address}
     <p>Address: {address}</p>
   {/if}
-  <div><button on:click={login}>login</button></div>
-  <div><button on:click={(e) => login(e, 0)}>login test account 1</button></div>
-  <div><button on:click={logout}>logout</button></div>
+  <div class="flex space-x-16">
+    <div><button on:click={login}>login</button></div>
+    <div><button on:click={(e) => login(e, 0)}>login test account 1</button></div>
+    <div><button on:click={logout}>logout</button></div>
+  </div>
 
   <iframe src={appUrl} frameborder="0" width="100%" height="500px" id="myIframe" />
 </div>
