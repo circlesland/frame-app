@@ -1,13 +1,13 @@
 import {
-  BaseTransaction,
-  getSDKVersion,
-  MessageFormatter,
-  Methods,
-  MethodToResponse,
-  RequestId,
-  RPCPayload,
-  SDKMessageEvent,
-  SignMessageParams,
+    BaseTransaction,
+    getSDKVersion,
+    MessageFormatter,
+    Methods,
+    MethodToResponse,
+    RequestId,
+    RPCPayload,
+    SDKMessageEvent,
+    SignMessageParams,
 } from '@gnosis.pm/safe-apps-sdk';
 import { providers } from 'ethers';
 
@@ -75,18 +75,6 @@ export class FrameCommunicator {
         const profileData = window.authApi.getDataFromLocalStorage();
         // @ts-ignore
         this.sendResponse(profileData, requestId);
-        break;
-      }
-
-      case "getSafeInfo": {
-        this.sendResponse(
-          {
-            safeAddress: "0xa6105f87497ad659b104bebb5a736956642588e7" || this.account.address,
-            chainId: this.account.chainId,
-            network: chainIdToNetwork[this.account.chainId],
-          },
-          requestId
-        );
         break;
       }
 
