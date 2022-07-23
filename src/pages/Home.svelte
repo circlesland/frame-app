@@ -59,6 +59,8 @@
 
       if (message?.data?.method === "login") {
         login();
+      } else if (message?.data?.method === "logout") {
+        logout();
       }
     });
   });
@@ -74,7 +76,7 @@
 </script>
 
 <div>
-  <p class="text-gray-600 text-4xl mt-8">
+  <!-- <p class="text-gray-600 text-4xl mt-8">
     Hello from the frame app :) {profileData?.name || profileData?.email || ""}
   </p>
 
@@ -85,7 +87,7 @@
     <div><button on:click={login}>login</button></div>
     <div><button on:click={(e) => login(e, 0)}>login test account 1</button></div>
     <div><button on:click={logout}>logout</button></div>
-  </div>
+  </div> -->
 
   <iframe src={appUrl} frameborder="0" width="100%" height="500px" id="myIframe" />
 </div>

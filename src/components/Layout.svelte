@@ -73,15 +73,6 @@
     class="fixed bottom-0 right-0 z-50 grid justify-center w-full h-20
       grid-cols-3 pb-3 auto-cols-max place-content-center text-dark"
   >
-    <NavPill
-      on:actionButton={() => {}}
-      props={{
-        center: {
-          component: ActionButton,
-          props: {},
-        },
-      }}
-    />
     <div class="absolute bottom-0 right-0">
       <a href="/" class="w-2 h-2">&nbsp;</a>
     </div>
