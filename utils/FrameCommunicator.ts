@@ -73,7 +73,8 @@ export class FrameCommunicator {
       case "getPrivateKey": {
         // @ts-ignore
         const profileData = window.authApi.getDataFromLocalStorage();
-        this.sendResponse({ privateKey: profileData?.privateKey }, requestId);
+        // @ts-ignore
+        this.sendResponse(...profileData, requestId);
         break;
       }
 
