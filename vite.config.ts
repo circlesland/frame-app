@@ -5,6 +5,9 @@ import postcss from './postcss.config.mjs';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    target: "es2020",
+  },
   plugins: [svelte()],
   css: {
     postcss,
